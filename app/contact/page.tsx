@@ -1,8 +1,7 @@
 // app/contact/page.tsx
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
+import { FormEventHandler, useState } from "react";
 import { Mail, Phone, MapPin, Clock, CheckCircle } from "lucide-react";
 import siteConfig from "@/lib/siteConfig";
 
@@ -17,12 +16,16 @@ export default function Contact() {
     message: "",
   });
 
-  const handleChange = (e) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Here you would typically handle form submission to your backend
     console.log("Form submitted:", formData);
